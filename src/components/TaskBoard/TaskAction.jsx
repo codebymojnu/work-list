@@ -1,9 +1,9 @@
-export default function TaskAction({ handleAddClick }) {
+export default function TaskAction({ onAddClick }) {
   return (
     <>
       <button
         className="rounded-md bg-blue-500 px-3.5 py-2.5 text-sm font-semibold"
-        onClick={handleAddClick}
+        onClick={onAddClick}
       >
         Add Task
       </button>

@@ -8,7 +8,17 @@ export default function TaskTableRow({
   priority,
   options,
   isFav,
+  handleUpdateTask
 }) {
+
+  const task = {
+    title,
+    description,
+    tags,
+    priority,
+    options,
+    isFav
+  };
   return (
     <tr className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2">
       <td>{isFav ? <FavoriteIcon /> : <NotFavoriteIcon />}</td>
@@ -31,7 +41,7 @@ export default function TaskTableRow({
       <td>
         <div className="flex items-center justify-center space-x-3">
           <button className="text-red-500">{options[0]}</button>
-          <button className="text-blue-500">{options[1]}</button>
+          <button className="text-blue-500" onClick={() => handleUpdateTask(task)}>{options[1]}</button>
         </div>
       </td>
     </tr>

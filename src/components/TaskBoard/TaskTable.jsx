@@ -1,7 +1,7 @@
 import TaskTableHeader from "./TaskTableHeader";
 import TaskTableRow from "./TaskTableRow";
 
-export default function TaskTable({ tasks }) {
+export default function TaskTable({ tasks, handleUpdateTask }) {
   return (
     <table className="table-fixed overflow-auto xl:w-full">
       <thead>
@@ -16,6 +16,7 @@ export default function TaskTable({ tasks }) {
             priority={task.priority}
             options={task.options}
             isFav={task.isFav}
+            handleUpdateTask={handleUpdateTask}
             key={i}
           />
         ))}

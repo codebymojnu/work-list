@@ -13,7 +13,7 @@ export default function AddTaskModal({ handleAddTask, taskToUpdate }) {
   function handleChange(e) {
     let value = e.target.value;
     if (e.target.name == "tags") {
-      value = value.split(", ");
+      value = value.split(",");
     }
     setTask({ ...task, [e.target.name]: value });
   }

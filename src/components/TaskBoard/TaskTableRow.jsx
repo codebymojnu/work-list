@@ -2,16 +2,19 @@ import FavoriteIcon from "../svg/FavoriteIcon";
 import NotFavoriteIcon from "../svg/NotFavoriteIcon";
 
 export default function TaskTableRow({
+  id,
   title,
   description,
   tags,
   priority,
   options,
   isFav,
-  handleUpdateTask
+  handleUpdateTask,
+  handleDeleteTask
 }) {
 
   const task = {
+    id,
     title,
     description,
     tags,
@@ -40,7 +43,7 @@ export default function TaskTableRow({
       <td className="text-center">{priority}</td>
       <td>
         <div className="flex items-center justify-center space-x-3">
-          <button className="text-red-500">{options[0]}</button>
+          <button className="text-red-500" onClick={() => handleDeleteTask(task)}>{options[0]}</button>
           <button className="text-blue-500" onClick={() => handleUpdateTask(task)}>{options[1]}</button>
         </div>
       </td>

@@ -11,14 +11,15 @@ export default function TaskBoard() {
   const [taskToUpdate, setTaskToUpdate] = useState(null);
 
   function handleAddTask(task, isAdd) {
-    console.log(task, isAdd)
+
     if (isAdd) {
       setTasks([...tasks, task])
     }
     else {
       const result = tasks.map(t => {
-        console.log(t.id, task.id)
-        if (t.priority === task.priority) {
+
+
+        if (t.id === task.id) {
           return task;
         }
         else {
@@ -26,7 +27,7 @@ export default function TaskBoard() {
         }
       })
       setTasks(result);
-      console.log(tasks)
+      setTaskToUpdate(null);
     }
     setShowModal(false);
   }
@@ -35,6 +36,17 @@ export default function TaskBoard() {
     setTaskToUpdate(task);
     setShowModal(true);
   }
+
+  function handleDeleteTask(task) {
+    console.log(task);
+    setTasks(tasks.filter(t => t.id !== task.id));
+  }
+
+  function handleDeleteAll() {
+    setTasks([]);
+  }
+
+
 
   return (
     <section className="mb-20" id="tasks">
@@ -50,11 +62,13 @@ export default function TaskBoard() {
             )}
             <h2 className="text-2xl font-semibold max-sm:mb-4">Your Tasks</h2>
             <div className="flex items-center space-x-5">
-              <TaskAction onAddClick={() => setShowModal(true)} />
+              <TaskAction onAddClick={() => setShowModal(true)} handleDeleteAll={handleDeleteAll} />
             </div>
           </div>
           <div className="overflow-auto">
-            <TaskTable tasks={tasks} handleUpdateTask={handleUpdateTask} />
+
+            <TaskTable tasks={tasks} handleUpdateTask={handleUpdateTask} handleDeleteTask={handleDeleteTask} />
+            <p className="text-center font-bold text-red-500">{tasks.length !== 0 ? "" : "Task not found. please add new"}</p>
           </div>
         </div>
       </div>

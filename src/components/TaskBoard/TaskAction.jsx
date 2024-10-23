@@ -1,4 +1,4 @@
-export default function TaskAction({ onAddClick }) {
+export default function TaskAction({ onAddClick, handleDeleteAll }) {
   return (
     <>
       <button
@@ -7,7 +7,8 @@ export default function TaskAction({ onAddClick }) {
       >
         Add Task
       </button>
-      <button className="rounded-md bg-red-500 px-3.5 py-2.5 text-sm font-semibold">
+      <button className="rounded-md bg-red-500 px-3.5 py-2.5 text-sm font-semibold"
+        onClick={handleDeleteAll}>
         Delete All
       </button>
     </>

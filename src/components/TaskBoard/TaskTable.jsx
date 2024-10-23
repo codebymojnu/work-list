@@ -1,7 +1,7 @@
 import TaskTableHeader from "./TaskTableHeader";
 import TaskTableRow from "./TaskTableRow";
 
-export default function TaskTable({ tasks, handleUpdateTask }) {
+export default function TaskTable({ tasks, handleUpdateTask, handleDeleteTask }) {
   return (
     <table className="table-fixed overflow-auto xl:w-full">
       <thead>
@@ -10,6 +10,7 @@ export default function TaskTable({ tasks, handleUpdateTask }) {
       <tbody>
         {tasks.map((task, i) => (
           <TaskTableRow
+            id={task.id}
             title={task.title}
             description={task.description}
             tags={task.tags}
@@ -17,6 +18,7 @@ export default function TaskTable({ tasks, handleUpdateTask }) {
             options={task.options}
             isFav={task.isFav}
             handleUpdateTask={handleUpdateTask}
+            handleDeleteTask={handleDeleteTask}
             key={i}
           />
         ))}
